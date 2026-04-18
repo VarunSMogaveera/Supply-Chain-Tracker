@@ -36,15 +36,18 @@ function Dashboard() {
 
       const ids = getStoredProductIds();
       const meta = getStoredProductMeta();
+      const currentScanLogs = getScanLogs();
 
       setActivity(getRecentActivity());
-      setScanLogs(getScanLogs());
+      setScanLogs(currentScanLogs);
 
       if (ids.length === 0) {
         setStats({
           total: 0,
           verified: 0,
-          verificationAlerts: 0,
+          verificationAlerts: currentScanLogs.filter(
+            (log) => log.status === "failed" || log.status === "invalid"
+          ).length,
           trackingAlerts: 0,
           delivered: 0,
         });
@@ -95,7 +98,11 @@ function Dashboard() {
         setStats({
           total: ids.length,
           verified,
-          verificationAlerts,
+          verificationAlerts:
+            verificationAlerts +
+            currentScanLogs.filter(
+              (log) => log.status === "failed" || log.status === "invalid"
+            ).length,
           trackingAlerts,
           delivered,
         });
@@ -121,10 +128,15 @@ function Dashboard() {
         setStats({
           total: ids.length,
           verified: 0,
-          verificationAlerts: fallbackProducts.reduce(
-            (count, product) => count + product.alerts.verificationAlerts.length,
-            0
-          ),
+          verificationAlerts:
+            fallbackProducts.reduce(
+              (count, product) =>
+                count + product.alerts.verificationAlerts.length,
+              0
+            ) +
+            currentScanLogs.filter(
+              (log) => log.status === "failed" || log.status === "invalid"
+            ).length,
           trackingAlerts: fallbackProducts.reduce(
             (count, product) => count + product.alerts.trackingAlerts.length,
             0

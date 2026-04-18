@@ -14,6 +14,49 @@ function getStepRank(step) {
   return index === -1 ? null : index;
 }
 
+function getHistorySignals(history) {
+  const steps = history || [];
+
+  return steps.reduce(
+    (signals, step) => {
+      const normalized = step.toLowerCase();
+
+      if (normalized.includes("transfer") || normalized.includes("owner")) {
+        signals.explicitTransfer = true;
+      }
+
+      if (normalized.includes("distributor")) {
+        signals.distributor = true;
+      }
+
+      if (normalized.includes("retailer")) {
+        signals.retailer = true;
+      }
+
+      if (
+        normalized.includes("customer") ||
+        normalized.includes("delivered to customer") ||
+        normalized.includes("customer received")
+      ) {
+        signals.customer = true;
+      }
+
+      if (normalized.includes("warehouse") || normalized.includes("transit")) {
+        signals.logisticsOnly = true;
+      }
+
+      return signals;
+    },
+    {
+      explicitTransfer: false,
+      distributor: false,
+      retailer: false,
+      customer: false,
+      logisticsOnly: false,
+    }
+  );
+}
+
 export function analyzeProductAlerts(product) {
   const alerts = [];
 
@@ -67,6 +110,11 @@ export function analyzeProductAlerts(product) {
   const deliveredCheckpoint = (product.history || []).some((step) =>
     step.toLowerCase().includes("deliver")
   );
+  const historySignals = getHistorySignals(product.history);
+  const ownerIsManufacturer =
+    product.owner &&
+    product.manufacturer &&
+    product.owner.toLowerCase() === product.manufacturer.toLowerCase();
 
   if (product.status === "Delivered" && !deliveredCheckpoint) {
     alerts.push({
@@ -77,16 +125,36 @@ export function analyzeProductAlerts(product) {
   }
 
   if (
+    ownerIsManufacturer &&
+    (historySignals.explicitTransfer ||
+      historySignals.distributor ||
+      historySignals.retailer)
+  ) {
+    alerts.push({
+      type: "tracking",
+      severity: "high",
+      message:
+        "History suggests handoff to another stakeholder, but current owner is still the manufacturer.",
+    });
+  }
+
+  if (ownerIsManufacturer && historySignals.customer && deliveredCheckpoint) {
+    alerts.push({
+      type: "tracking",
+      severity: "high",
+      message:
+        "Product is marked delivered to the customer, but blockchain ownership still remains with the manufacturer.",
+    });
+  } else if (
+    ownerIsManufacturer &&
     deliveredCheckpoint &&
-    product.owner &&
-    product.manufacturer &&
-    product.owner.toLowerCase() === product.manufacturer.toLowerCase()
+    !historySignals.logisticsOnly
   ) {
     alerts.push({
       type: "tracking",
       severity: "medium",
       message:
-        "Product is marked delivered but current owner is still the manufacturer.",
+        "Product is marked delivered while ownership never changed from the manufacturer. If delivery ends with the customer, add a transfer or stakeholder checkpoint.",
     });
   }
 
