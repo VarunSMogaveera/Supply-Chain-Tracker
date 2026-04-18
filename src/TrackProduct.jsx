@@ -59,7 +59,7 @@ function TrackProduct() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-      <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+      <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-6 shadow-xl shadow-black/20">
         <h3 className="text-2xl font-semibold text-white">Track a Product</h3>
         <p className="mt-2 text-sm text-slate-400">
           Enter the product ID to read the current owner, manufacturer, history,
@@ -71,14 +71,14 @@ function TrackProduct() {
             value={id}
             onChange={(event) => setId(event.target.value)}
             placeholder="Example: MED-BOX-001"
-            className="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-cyan-400"
+            className="w-full rounded-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:bg-slate-900"
           />
 
           <button
             type="button"
             onClick={handleTrack}
             disabled={loading}
-            className="w-full rounded-2xl bg-cyan-400 px-4 py-3 font-medium text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-300"
+            className="w-full rounded-2xl bg-gradient-to-r from-cyan-300 to-sky-300 px-4 py-3 font-medium text-slate-950 shadow-lg shadow-cyan-500/10 transition hover:brightness-105 disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-300"
           >
             {loading ? "Loading blockchain data..." : "Track Product"}
           </button>
@@ -91,9 +91,9 @@ function TrackProduct() {
         )}
       </div>
 
-      <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+      <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-6 shadow-xl shadow-black/20">
         {!product ? (
-          <div className="flex min-h-[420px] items-center justify-center rounded-3xl border border-dashed border-white/10 text-center text-sm text-slate-400">
+          <div className="flex min-h-[320px] items-center justify-center rounded-[1.75rem] border border-dashed border-white/10 bg-white/[0.02] px-6 text-center text-sm text-slate-400">
             Search for a product to see its blockchain identity and journey.
           </div>
         ) : (
@@ -119,7 +119,7 @@ function TrackProduct() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Manufacturer</p>
                 <p className="mt-2 break-all text-sm text-white">
                   {product.manufacturer}
@@ -133,7 +133,7 @@ function TrackProduct() {
                 </button>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Current Owner</p>
                 <p className="mt-2 break-all text-sm text-white">{product.owner}</p>
                 <button
@@ -146,7 +146,7 @@ function TrackProduct() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
               <div className="flex items-center justify-between">
                 <h4 className="text-lg font-semibold text-white">Supply Chain History</h4>
                 <span className="text-sm text-slate-400">
@@ -172,7 +172,7 @@ function TrackProduct() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Quick Summary</p>
                 <ul className="mt-3 space-y-2 text-sm text-slate-300">
                   <li>Manufacturer: {shortenAddress(product.manufacturer)}</li>
@@ -181,7 +181,7 @@ function TrackProduct() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Share Verification QR</p>
                 <div className="mt-4 flex flex-col items-center gap-3">
                   <div className="rounded-3xl bg-white p-4">

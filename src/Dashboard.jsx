@@ -183,7 +183,7 @@ function Dashboard() {
         {cards.map((card) => (
           <div
             key={card.label}
-            className={`rounded-3xl border border-white/10 bg-gradient-to-br ${card.tone} p-5`}
+            className={`rounded-[1.6rem] border border-white/10 bg-gradient-to-br ${card.tone} p-5 shadow-xl shadow-black/10`}
           >
             <p className="text-sm text-slate-300">{card.label}</p>
             <p className="mt-3 text-4xl font-semibold text-white">
@@ -201,7 +201,7 @@ function Dashboard() {
 
       <div className="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
         <div className="space-y-6">
-          <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
+          <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-5 shadow-xl shadow-black/20">
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-semibold text-white">
@@ -216,7 +216,7 @@ function Dashboard() {
 
             <div className="space-y-3">
               {!loading && products.length === 0 && (
-                <div className="rounded-2xl border border-dashed border-white/10 p-6 text-sm text-slate-400">
+                <div className="rounded-[1.5rem] border border-dashed border-white/10 bg-white/[0.02] p-6 text-sm text-slate-400">
                   No products created yet. Start from the Create page to register
                   your first product.
                 </div>
@@ -225,7 +225,7 @@ function Dashboard() {
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-4"
+                  className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10"
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div>
@@ -256,7 +256,7 @@ function Dashboard() {
                     )}
                   </div>
 
-                  <div className="mt-3 grid gap-2 text-sm text-slate-400 sm:grid-cols-3">
+                  <div className="mt-4 grid gap-3 text-sm text-slate-400 sm:grid-cols-3">
                     <p>
                       Manufacturer:{" "}
                       <span className="text-slate-200">
@@ -281,9 +281,9 @@ function Dashboard() {
 
                   {(product.alerts.verificationAlerts.length > 0 ||
                     product.alerts.trackingAlerts.length > 0) && (
-                    <div className="mt-4 grid gap-3 lg:grid-cols-2">
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
                       {product.alerts.verificationAlerts.length > 0 && (
-                        <div className="rounded-2xl border border-rose-400/20 bg-rose-400/10 p-3">
+                        <div className="rounded-2xl border border-rose-400/20 bg-rose-400/10 p-4">
                           <p className="text-sm font-medium text-rose-100">
                             Verification Alerts
                           </p>
@@ -296,7 +296,7 @@ function Dashboard() {
                       )}
 
                       {product.alerts.trackingAlerts.length > 0 && (
-                        <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 p-3">
+                        <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4">
                           <p className="text-sm font-medium text-amber-100">
                             Tracking Alerts
                           </p>
@@ -314,7 +314,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
+          <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-5 shadow-xl shadow-black/20">
             <h3 className="text-xl font-semibold text-white">Recent QR Verification Log</h3>
             <div className="mt-4 space-y-3">
               {scanLogs.length === 0 && (
@@ -326,7 +326,7 @@ function Dashboard() {
               {scanLogs.map((log, index) => (
                 <div
                   key={`${log.timestamp}-${index}`}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-3"
+                  className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-3 shadow-lg shadow-black/10"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-sm font-medium text-white">
@@ -355,7 +355,7 @@ function Dashboard() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
+          <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-5 shadow-xl shadow-black/20">
             <h3 className="text-xl font-semibold text-white">Recent Activity</h3>
             <div className="mt-4 space-y-3">
               {activity.length === 0 && (
@@ -368,7 +368,7 @@ function Dashboard() {
               {activity.map((item, index) => (
                 <div
                   key={`${item.timestamp}-${index}`}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-3"
+                  className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-3 shadow-lg shadow-black/10"
                 >
                   <p className="text-sm font-medium text-white">{item.title}</p>
                   <p className="mt-1 text-sm text-slate-400">{item.description}</p>

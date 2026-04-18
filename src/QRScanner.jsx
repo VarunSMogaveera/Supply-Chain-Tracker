@@ -176,7 +176,7 @@ function QRScanner() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
       <div className="space-y-6">
-        <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+        <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-6 shadow-xl shadow-black/20">
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
@@ -202,25 +202,25 @@ function QRScanner() {
             </button>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-white/10 bg-black/30 p-4">
+          <div className="mt-6 rounded-[1.75rem] border border-white/10 bg-black/30 p-4">
             {mode === "camera" ? (
               <>
                 <div
                   id={readerId}
-                  className="mx-auto min-h-[300px] overflow-hidden rounded-2xl bg-slate-900"
+                  className="mx-auto min-h-[260px] overflow-hidden rounded-[1.5rem] bg-slate-900"
                 />
                 <div className="mt-4 flex gap-3">
                   <button
                     type="button"
                     onClick={startScanner}
-                    className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-400/40"
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-400/40 hover:bg-white/[0.06]"
                   >
                     {isScanning ? "Restart camera scan" : "Start camera scan"}
                   </button>
                 </div>
               </>
             ) : (
-              <label className="flex min-h-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/[0.02] p-6 text-center">
+              <label className="flex min-h-[260px] cursor-pointer flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-white/10 bg-white/[0.03] p-6 text-center">
                 <span className="text-lg font-medium text-white">
                   Upload a QR image
                 </span>
@@ -241,7 +241,7 @@ function QRScanner() {
         </div>
       </div>
 
-      <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+      <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/80 p-6 shadow-xl shadow-black/20">
         <h3 className="text-2xl font-semibold text-white">Verification Result</h3>
         <p className="mt-2 text-sm text-slate-400">
           Product details shown here are checked live against the blockchain.
@@ -260,7 +260,7 @@ function QRScanner() {
         )}
 
         {!product && !loading && !message && (
-          <div className="mt-6 flex min-h-[360px] items-center justify-center rounded-3xl border border-dashed border-white/10 text-center text-sm text-slate-400">
+          <div className="mt-6 flex min-h-[300px] items-center justify-center rounded-[1.75rem] border border-dashed border-white/10 bg-white/[0.02] px-6 text-center text-sm text-slate-400">
             Scan or upload a QR code to verify product authenticity.
           </div>
         )}
@@ -280,19 +280,19 @@ function QRScanner() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Manufacturer</p>
                 <p className="mt-2 break-all text-sm text-white">
                   {product.manufacturer}
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
                 <p className="text-sm text-slate-400">Current Owner</p>
                 <p className="mt-2 break-all text-sm text-white">{product.owner}</p>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
               <div className="flex items-center justify-between">
                 <p className="text-sm text-slate-400">Verification Status</p>
                 <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-200">
@@ -305,7 +305,7 @@ function QRScanner() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/10">
               <p className="text-sm text-slate-400">History</p>
               <div className="mt-3 space-y-3">
                 {product.history.map((step, index) => (
