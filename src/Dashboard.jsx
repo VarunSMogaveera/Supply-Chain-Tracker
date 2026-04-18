@@ -319,8 +319,7 @@ function Dashboard() {
             <div className="mt-4 space-y-3">
               {scanLogs.length === 0 && (
                 <p className="text-sm text-slate-400">
-                  Scan attempts will appear here. Failed scans help demonstrate
-                  verification alerts in your project.
+                  Recent QR verification attempts will appear here.
                 </p>
               )}
 
@@ -344,7 +343,7 @@ function Dashboard() {
                     </span>
                   </div>
                   <p className="mt-1 text-sm text-slate-400">
-                    Source: {log.source}
+                    Method: {log.source}
                   </p>
                   {log.reason && (
                     <p className="mt-1 text-sm text-slate-300">{log.reason}</p>
@@ -356,24 +355,6 @@ function Dashboard() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
-            <h3 className="text-xl font-semibold text-white">How Alerts Work</h3>
-            <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>Verification alerts appear when a product cannot be fetched from the blockchain.</li>
-              <li>Tracking alerts appear when checkpoints are missing or move in a suspicious order.</li>
-              <li>High risk means your demo has a strong counterfeit or mistracking example to explain.</li>
-            </ul>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
-            <h3 className="text-xl font-semibold text-white">Demo Ideas</h3>
-            <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>Create a valid product and scan its QR to show successful verification.</li>
-              <li>Try scanning a QR with a fake ID to generate a verification alert.</li>
-              <li>Add a strange checkpoint after delivery wording to explain mistracking logic.</li>
-            </ul>
-          </div>
-
           <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
             <h3 className="text-xl font-semibold text-white">Recent Activity</h3>
             <div className="mt-4 space-y-3">

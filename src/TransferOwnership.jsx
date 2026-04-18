@@ -107,12 +107,6 @@ function TransferOwnership() {
           <li>4. Add another checkpoint when the product reaches the new stage.</li>
           <li>5. Use the tracker or QR scanner to verify the updated owner and history.</li>
         </ol>
-
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
-          Improvement added: after a successful transfer, the app also tries to
-          add an automatic checkpoint so the history reflects ownership movement
-          in your demo.
-        </div>
       </div>
     </div>
   );

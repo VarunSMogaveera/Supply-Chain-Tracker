@@ -91,10 +91,6 @@ function AddCheckpoint() {
 
       <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
         <h3 className="text-2xl font-semibold text-white">Suggested Stages</h3>
-        <p className="mt-2 text-sm text-slate-400">
-          Use meaningful stages so the status detection works clearly during your
-          demo. You can click any suggestion to fill it quickly.
-        </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
           {quickLocations.map((item) => (
@@ -107,11 +103,6 @@ function AddCheckpoint() {
               {item}
             </button>
           ))}
-        </div>
-
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
-          Tip: write the last checkpoint as "Delivered" or "Delivered to
-          customer" to make the tracker show the Delivered status automatically.
         </div>
       </div>
     </div>

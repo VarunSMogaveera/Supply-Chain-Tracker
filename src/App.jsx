@@ -78,10 +78,6 @@ function App() {
                   {pageTitle.label}
                 </h2>
               </div>
-              <p className="max-w-xl text-sm text-slate-400">
-                {pageTitle.hint}. Use MetaMask for write actions and the QR
-                verifier for public authenticity checks.
-              </p>
             </div>
 
             {page === "dashboard" && <Dashboard />}

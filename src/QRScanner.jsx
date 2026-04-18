@@ -222,11 +222,11 @@ function QRScanner() {
             ) : (
               <label className="flex min-h-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/[0.02] p-6 text-center">
                 <span className="text-lg font-medium text-white">
-                  Upload a QR screenshot or photo
+                  Upload a QR image
                 </span>
                 <span className="mt-2 max-w-xs text-sm text-slate-400">
-                  Best option when the QR is shown on another phone screen, a PPT,
-                  or a saved image.
+                  Use this when the QR is saved as a screenshot, shown in a PPT,
+                  or displayed on the same phone.
                 </span>
                 <input
                   type="file"
@@ -238,28 +238,18 @@ function QRScanner() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
-            <p className="font-medium text-white">How to use it correctly</p>
-            <ul className="mt-3 space-y-2">
-              <li>Use camera scan when one device scans a QR shown on another device or printed label.</li>
-              <li>Use upload scan when the QR is already saved as an image or screenshot.</li>
-              <li>The same phone cannot reliably scan a QR that is displayed on its own screen using its own camera.</li>
-              <li>Your QR should contain at least the product ID. This app now supports JSON, plain text IDs, and URLs with `id` in query params.</li>
-            </ul>
-          </div>
         </div>
       </div>
 
       <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
         <h3 className="text-2xl font-semibold text-white">Verification Result</h3>
         <p className="mt-2 text-sm text-slate-400">
-          The QR only identifies the product. The details shown here are fetched
-          live from the blockchain for authenticity verification.
+          Product details shown here are checked live against the blockchain.
         </p>
 
         {loading && (
           <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-100">
-            Verifying product from blockchain...
+            Checking product authenticity...
           </div>
         )}
 
@@ -304,7 +294,7 @@ function QRScanner() {
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-slate-400">Current Status</p>
+                <p className="text-sm text-slate-400">Verification Status</p>
                 <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-200">
                   {product.status}
                 </span>
